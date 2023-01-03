@@ -15,17 +15,21 @@ fun main(){
     // Part 1
     for(i in 0..100) {
         if (i == 71) {
-            println("IT\'S OVER 70!!!")
+            println("IT'S OVER 70!!!")
             break
         } //else println(i)
     }
-    // Part
+    var names  = arrayListOf("Hi", "Hello", "SARa")
+    if("sara".equals("Sara",true)) {
+        println(names)
+    }
+    // Part 2
     var temperature = 35
-    while(temperature >10 ){
-        when{
-            temperature == 30-> println("It\'s Hot")
-            temperature ==20-> println("It's comfy")
-            temperature ==15 -> println("It's Cold!!!")
+    while(temperature > 10 ){
+        when (temperature) {
+            30 -> println("It's Hot")
+            20 -> println("It's comfy")
+            15 -> println("It's Cold!!!")
         }
             temperature--
     }
