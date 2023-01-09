@@ -48,7 +48,7 @@ class Todo {
         for (i in tasks) {
             if (i.id == num) {
                 println("Task id: ${i.id}, Name: ${i.name}, Note: ${i.note}, Is it done? ${i.isCompleted}")
-                break
+                return
             }
         }
         println("Did not find task with id: $num")
@@ -56,40 +56,33 @@ class Todo {
 
     fun addTask(task: Task) {
         // TODO: Adds the given task
-        // This var is to check if there are any tasks with the same ID
-        var isThere = false //-> default value is false assuming there are no value with the same ID
-        for (i in tasks) {
-            if (i.id == task.id) {
-                isThere = true
-                break
-            }
-        }
-        if (isThere) {
-            println("There is already a task with the same id: ${task.id}")
-        }else{
+        if (task !in tasks) {
             tasks.add(task)
             println("Task added successfully")
+        } else {
+            println("There is already a task with the same id: ${task.id}")
+
         }
     }
 
     fun removeTask(task: Task) {
         // TODO: Removes the given task
-        for (i in tasks) {
-            if (task.id == i.id) {
-                tasks.remove(task)
-                println("Task with id: ${i.id} deleted successfully")
-                return
-            }
+
+        if (task in tasks) {
+            tasks.remove(task)
+            println("Task with id: ${task.id} deleted successfully")
+            return
+        } else {
+
+            println("Did not find task with id: ${task.id}")
         }
-        println("Did not find task with id: ${task.id}")
     }
 
     fun changeTask(task: Task) {
         // TODO: Changes the task with the given dataclass
         for (i in 0 until tasks.size) {
             if (task.id == tasks[i].id) {
-                tasks[i].isCompleted = task.isCompleted
-//                tasks[i]= task    // --> This will change all the values whether it is a val or var
+                tasks[i].isCompleted = !task.isCompleted
                 println("Task with id: ${tasks[i].id} changed successfully")
                 return
             }
